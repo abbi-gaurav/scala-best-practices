@@ -153,9 +153,9 @@ Defining traits is also a burden for readers of that code, because it
 signals a need for polymorphism. Example:
 
 ```scala
-trait PersonLike
- def name: String
- def age: Int
+trait PersonLike {
+  def name: String
+  def age: Int
 }
 
 case class Person(name: String, age: Int)
@@ -344,7 +344,7 @@ zombie unrecoverable state. Which means that an external supervisor
 Instead do this:
 
 ```scala
-import scala.control.NonFatal
+import scala.util.control.NonFatal
 
 try {
  something()
@@ -609,7 +609,7 @@ def sayHelloRunnable(name: String) = new Runnable {
 Do you think it's `Runnable`?
 Wrong, it's `Runnable{def sayIt(): Unit}`.
 
-As a side-effect, this also decreases compilation times, as whenever
+As a side-effect, this also increases compilation times, as whenever
 `sayHelloRunnable` changes implementation, it also changes the
 signature so everything that depends on it must be recompiled.
 
